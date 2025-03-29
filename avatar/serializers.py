@@ -1,4 +1,3 @@
-from attr.filters import exclude
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -18,7 +17,7 @@ class UserResponseSerializer(serializers.ModelSerializer):
 
 class AvatarCreationSerializer(serializers.ModelSerializer):
     fk_user = UserCreateSerializer()
-    fk_user_locale = user_locale_serializers.UserLocaleSerializer(many=True)
+    fk_user_locale = user_locale_serializers.UserLocaleSerializer
 
     class Meta:
         model = AvatarModel
@@ -26,7 +25,7 @@ class AvatarCreationSerializer(serializers.ModelSerializer):
 
 class AvatarResponseSerializer(serializers.ModelSerializer):
     fk_user = UserResponseSerializer()
-    fk_user_locale = user_locale_serializers.UserLocaleSerializer(many=True)
+    fk_user_locale = user_locale_serializers.UserLocaleSerializer
 
     class Meta:
         model = AvatarModel

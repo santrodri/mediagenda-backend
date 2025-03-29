@@ -17,7 +17,7 @@ class AvatarModel(models.Model):
     ))
     fk_user_locale = models.ManyToManyField(UserLocaleModel)
     phone_number = models.CharField(max_length=18)
-    status = models.CharField(max_length=500)
+    status = models.CharField(max_length=500, null=True)
     # avatar details controller
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

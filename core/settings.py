@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+from datetime import timedelta
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -16,10 +18,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # my installed apps
     'drf_spectacular',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     # my apps
     'rest_framework',
+    'user',
     'avatar',
-    'user_locale'
+    'user_locale',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +93,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication',],
 }
 
 SPECTACULAR_SETTINGS = {
@@ -95,4 +101,9 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'Documentação da API do Mediagenda.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': True,
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
