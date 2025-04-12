@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
+import dotenv
+
+dotenv.load_dotenv('.env.development')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -25,6 +28,7 @@ INSTALLED_APPS = [
     'user',
     'avatar',
     'user_locale',
+    'jwt_token',
 ]
 
 MIDDLEWARE = [
@@ -107,3 +111,10 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_EMAIL = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS = True

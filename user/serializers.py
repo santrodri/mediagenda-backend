@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from . import  models as user_models
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,3 +21,9 @@ class UserSerializerRequest(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+
+
+class UserNonCofirmedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = user_models.UserNonConfirmed
+        exclude = ['id']
