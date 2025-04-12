@@ -39,6 +39,3 @@ Sinta-se à vontade para usar este projeto livremente, sugerir melhorias ou entr
 * Email enviado ao cliente
     ![imagen de tela de cadastro](readme/Captura%20de%20tela%20de%202025-04-11%2021-55-59.png)
     Essa paginá e enviada ao cliente como forma de autencação do email
-
-
-As páginas também possuem suporte ao tema escuro. Todas as capturas de tela, em ambos os temas, estão disponíveis na pasta `./imagens`.
